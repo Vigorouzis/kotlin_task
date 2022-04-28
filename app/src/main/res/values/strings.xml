@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">kotlin_task</string>
+    <string name="cat_image">Cat image</string>
+</resources>
