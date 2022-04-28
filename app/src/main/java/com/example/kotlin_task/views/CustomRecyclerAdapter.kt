@@ -11,7 +11,7 @@ import com.example.kotlin_task.R
 import com.example.kotlin_task.domain.Cat
 import com.example.kotlin_task.presentation.DetailActivity
 
-class CustomRecyclerAdapter(private val cats: List<Cat>) :
+class CustomRecyclerAdapter(private val cats: ArrayList<Cat>) :
     RecyclerView.Adapter<CustomRecyclerAdapter.MyViewHolder>() {
 
 
@@ -21,10 +21,20 @@ class CustomRecyclerAdapter(private val cats: List<Cat>) :
         val largeTextView: TextView = itemView.findViewById(R.id.age)
     }
 
+    fun deleteItem(position: Int) {
+        cats.removeAt(position)
+        notifyDataSetChanged()
+    }
+
+    fun addItem(cat: Cat, position: Int) {
+        cats.add(position, cat)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.recyclerview_item, parent, false)
-        val vh = MyViewHolder(itemView)
+
 
 
         return MyViewHolder(itemView)
@@ -32,7 +42,7 @@ class CustomRecyclerAdapter(private val cats: List<Cat>) :
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val cat: Cat = cats[position]
-        holder.catImage.setImageResource(cat.catResource);
+        holder.catImage.setImageResource(cat.catResource)
         holder.largeTextView.text = "Возраст: ${cat.age}"
         holder.smallTextView.text = "Порода: ${cat.breed}"
 

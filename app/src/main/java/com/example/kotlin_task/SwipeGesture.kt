@@ -31,7 +31,7 @@ abstract class SwipeGesture(private val context: Context) :
 
         RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
             .addSwipeLeftBackgroundColor(ContextCompat.getColor(context, R.color.purple_500))
-            .addSwipeLeftActionIcon(R.drawable.slide_foreground)
+            .addSwipeLeftActionIcon(R.drawable.slide_foreground).addSwipeRightBackgroundColor(ContextCompat.getColor(context, R.color.teal_200))
             .create()
             .decorate()
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
