@@ -2,6 +2,7 @@ package com.example.kotlin_task
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_task.domain.Cat
@@ -20,8 +21,24 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val adapter = CustomRecyclerAdapter(cats)
-        // устанавливаем для списка адаптер
-        // устанавливаем для списка адаптер
+
+        val swipeGesture = object : SwipeGesture(this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                when (direction) {
+                    ItemTouchHelper.LEFT ->
+                        adapter.deleteItem(viewHolder.absoluteAdapterPosition)
+
+                    ItemTouchHelper.RIGHT -> {
+                        val newItem = cats[viewHolder.absoluteAdapterPosition]
+                        adapter.addItem(newItem, cats.size)
+                    }
+
+                }
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeGesture)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+
         recyclerView.adapter = adapter
     }
 
