@@ -17,11 +17,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setInitialData()
+            //вьюшка для отображения списка
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-
+        //адаптер который контролирует вью
         val adapter = CustomRecyclerAdapter(cats)
-
+        //контроль элемента свайп для дупблирования писка и удаления
         val swipeGesture = object : SwipeGesture(this) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 when (direction) {
@@ -36,12 +37,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        //назвачение контроллера для того чтобы элемент спсика свайпался
         val itemTouchHelper = ItemTouchHelper(swipeGesture)
         itemTouchHelper.attachToRecyclerView(recyclerView)
-
+        //назначение
         recyclerView.adapter = adapter
     }
 
+    //данные класса кот для вывода на экран
     private fun setInitialData() {
         cats.add(Cat(5, 110, 15, "Британская", R.drawable.british))
         cats.add(Cat(6, 110, 15, "Мейн-кун", R.drawable.mein_kun))

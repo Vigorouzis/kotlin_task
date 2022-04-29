@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.kotlin_task.R
 import com.example.kotlin_task.domain.Cat
-
+//класс для редактирования котов
 class ChangeDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

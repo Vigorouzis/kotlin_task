@@ -10,7 +10,7 @@ import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 abstract class SwipeGesture(private val context: Context) :
     ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
-
+        //для понимания жестов
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
@@ -18,7 +18,7 @@ abstract class SwipeGesture(private val context: Context) :
     ): Boolean {
         return false
     }
-
+//когда свайпаю рисуется цвет и иконка
     override fun onChildDraw(
         c: Canvas,
         recyclerView: RecyclerView,

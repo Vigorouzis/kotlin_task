@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlin_task.R
 import com.example.kotlin_task.domain.Cat
 
-
+//класс второго экрана, который открыт
 class DetailActivity : AppCompatActivity() {
 
     companion object {
