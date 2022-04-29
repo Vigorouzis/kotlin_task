@@ -28,10 +28,10 @@ class DetailActivity : AppCompatActivity() {
         if (result.resultCode == RESULT_OK) {
             val intent: Intent? = result.data
             val cat: Cat = intent?.getParcelableExtra(EXTRA_CAT)!!
-            ageText.text = cat.age.toString()
-            growthText.text = cat.growth.toString()
-            weightText.text = cat.weight.toString()
-            breedText.text = cat.breed
+            ageText.text = "Порода: ${cat.age}"
+            growthText.text = "Возраст: ${cat.growth}"
+            weightText.text = "Рост: ${cat.weight}"
+            breedText.text = "Вес: ${cat.breed}"
 
         }
     }
